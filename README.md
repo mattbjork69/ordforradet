@@ -1,5 +1,5 @@
 
-# ordförrådet.se (demo)
+# ordförrådet (demo)
 
 Fullstack Next.js-app med:
 - **NextAuth (Credentials)** för enkel inloggning (skapar användare vid första inloggning)
