@@ -1,0 +1,32 @@
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String   @unique
+  age       Int?
+  password  String?  // optional for Credentials demo (hashed)
+  createdAt DateTime @default(now())
+  results   Result[]
+}
+
+model Result {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  total         Int
+  correct       Int
+  avgDifficulty Float
+  estMean       Int
+  estLo         Int
+  estHi         Int
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+}
